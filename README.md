@@ -4,9 +4,9 @@
 # Docker image usage
 
 You can start Docker container with the following command (make sure to replace `<USER>` and `<PASSWORD>` placeholders with your own credentials).
-
+if USER env not set then ss5 server NoAuthAuthenticator. The LISTHEN if not set then listen 127.0.0.1:1080
 ```bash
-docker run -d --name socks5-proxy -p 1080:1080 -e USER=<USER> -e PASSWORD=<PASSWORD> ocassio/go-socks5-proxy
+docker run -d --name ss5 -p 1080:1080 -e USER=<USER> -e PASSWORD=<PASSWORD> -e LISTEN=<LISTEN ADRR> ananclub/ss5
 ```
 
 # Build
