@@ -9,10 +9,15 @@ import (
 
 func main() {
 
-	creadentials := socks5.StaticCredentials{
-		os.Getenv("USER"): os.Getenv("PASSWORD"),
+	var authenticator socks5.Authenticator
+	if os.Getenv("USER") != "" {
+		creadentials := socks5.StaticCredentials{
+			os.Getenv("USER"): os.Getenv("PASSWORD")}
+
+		authenticator = socks5.UserPassAuthenticator{Credentials: creadentials}
+	} else {
+		authenticator = socks5.NoAuthAuthenticator{}
 	}
-	authenticator := socks5.UserPassAuthenticator{Credentials: creadentials}
 
 	// Create a SOCKS5 server
 	config := &socks5.Config{
@@ -23,9 +28,11 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-
-	// Create SOCKS5 proxy on localhost port 1080
-	if err := server.ListenAndServe("tcp", "0.0.0.0:1080"); err != nil {
+	listen := os.Getenv("LISTEN")
+	if listen == "" {
+		listen = "0.0.0.0:1080"
+	}
+	if err := server.ListenAndServe("tcp", listen); err != nil {
 		panic(err)
 	}
 }
