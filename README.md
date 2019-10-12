@@ -1,6 +1,5 @@
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/ananclub/ss5.svg)](https://hub.docker.com/r/ananclub/ss5/)
-
+[![Docker Pulls](https://img.shields.io/docker/pulls/ananclub/ss5.svg)](https://hub.docker.com/r/ananclub/ss5/)[![Build Status](https://travis-ci.org/ananclub/go-socks5-proxy.svg)](https://travis-ci.org/ananclub/go-socks5-proxy) 
 # Docker image usage
 
 - You can start Docker container with the following command (make sure to replace `<USER>` and `<PASSWORD>` placeholders with your own credentials).
