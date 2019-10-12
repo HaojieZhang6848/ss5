@@ -1,0 +1,10 @@
+dist: xenial
+language: go
+go:
+  - 1.12.10
+
+
+notifications:
+  email:
+    on_success: change
+    on_failure: always
