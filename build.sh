@@ -21,7 +21,12 @@ CMD ["/server"]
 EOF
 
 docker build -t ${DOCKERREPO}/${NAME}:${TAG} .
-#docker push ${DOCKERREPO}/${NAME}:${TAG}
+
+if [[ "$TAG" != "latest" ]] ;then
+	docker push ${DOCKERREPO}/${NAME}:latest
+	docker tag ${DOCKERREPO}/${NAME}:latest ${DOCKERREPO}/${NAME}:${TAG}
+	docker push ${DOCKERREPO}/${NAME}:${TAG}
+fi
 
 rm -rf Dockerfile
 
