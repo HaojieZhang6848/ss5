@@ -30,7 +30,7 @@ func main() {
 	}
 	listen := os.Getenv("LISTEN")
 	if listen == "" {
-		listen = "127.0.0.1:1080"
+		listen = "0.0.0.0:1080"
 	}
 	if err := server.ListenAndServe("tcp", listen); err != nil {
 		panic(err)
